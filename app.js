@@ -30,8 +30,12 @@ function getInputValue(productName) {
 function calculateTotal() {
   const phoneTotal = getInputValue("phone");
   const caseTotal = getInputValue("case");
-  const totalPrice = parseInt(caseTotal) + parseInt(phoneTotal);
-  document.getElementById("subtotal").innerText = totalPrice;
+  const subTotal = parseInt(caseTotal) + parseInt(phoneTotal);
+  document.getElementById("subtotal").innerText = subTotal;
+  const tax = subTotal / 10; //10% tax;
+  document.getElementById("tax-amount").innerText = tax;
+  const total = subTotal + tax;
+  document.getElementById("total-price").innerText = total;
 }
 
 /* ----------------------------------------
