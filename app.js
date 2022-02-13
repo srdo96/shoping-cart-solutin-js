@@ -1,5 +1,5 @@
-function updateCase(isIncreasing) {
-  const quantityText = document.getElementById("case-quantity");
+function updateProductNum(isIncreasing, elementID) {
+  const quantityText = document.getElementById(elementID);
   const quantity = parseInt(quantityText.value);
   if (isIncreasing) {
     return (quantityText.value = quantity + 1);
@@ -11,18 +11,28 @@ function updateCase(isIncreasing) {
 }
 
 // case total price calculation
-function caseTotalPrice(quantity) {
-  document.getElementById("case-total-price").innerText = quantity * 59;
+function productTotalPrice(elementID, quantity, unitPrice) {
+  document.getElementById(elementID).innerText = quantity * unitPrice;
 }
 
+// phone plus button
+document.getElementById("phone-plus").addEventListener("click", function () {
+  const quantity = updateProductNum(true, "phone-quantity");
+  productTotalPrice("phone-total-price", quantity, 1219);
+});
+// phone minus button
+document.getElementById("phone-minus").addEventListener("click", function () {
+  const quantity = updateProductNum(false, "phone-quantity");
+  productTotalPrice("phone-total-price", quantity, 1219);
+});
 // case plus button
 document.getElementById("case-plus").addEventListener("click", function () {
-  const quantity = updateCase(true);
-  caseTotalPrice(quantity);
+  const quantity = updateProductNum(true, "case-quantity");
+  productTotalPrice("case-total-price", quantity, 59);
 });
 
 // case minus button
 document.getElementById("case-minus").addEventListener("click", function () {
-  const quantity = updateCase(false);
-  caseTotalPrice(quantity);
+  const quantity = updateProductNum(false, "case-quantity");
+  productTotalPrice("case-total-price", quantity, 59);
 });
