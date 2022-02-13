@@ -18,6 +18,20 @@ function updateProduct(productName, unitPrice, isIncreasing) {
     quantityText.value = quantity;
     priceText.innerText = quantity * unitPrice;
   }
+  calculateTotal();
+}
+
+function getInputValue(productName) {
+  const input = document.getElementById(productName + "-total-price").innerText;
+  return input;
+}
+
+// calculate subtotal
+function calculateTotal() {
+  const phoneTotal = getInputValue("phone");
+  const caseTotal = getInputValue("case");
+  const totalPrice = parseInt(caseTotal) + parseInt(phoneTotal);
+  document.getElementById("subtotal").innerText = totalPrice;
 }
 
 /* ----------------------------------------
