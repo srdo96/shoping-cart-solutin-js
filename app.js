@@ -5,8 +5,12 @@ function updateCase(isIncreasing) {
     return (quantityText.value = quantity + 1);
   } else if (quantity > 0) {
     return (quantityText.value = quantity - 1);
+  } else if (quantity == 0) {
+    return (quantityText.value = quantity);
   }
 }
+
+// case total price calculation
 function caseTotalPrice(quantity) {
   document.getElementById("case-total-price").innerText = quantity * 59;
 }
